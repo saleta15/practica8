@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@ManagedBean
+@ManagedBean(name="contactoBean")
 @SessionScoped
 public class ContactoBean implements Serializable {
     private String nombre;
@@ -32,23 +32,7 @@ public class ContactoBean implements Serializable {
 
     @PostConstruct
     public void init() {
-        Contacto nuevoContacto = new Contacto();
-        nuevoContacto.setApellido("sdfsfd");
-        nuevoContacto.setNombre("dddfdf");
-        nuevoContacto.setCorreo("dfsdf");
-        nuevoContacto.setDireccion("dsferfw");
-        nuevoContacto.setTelefono("fwegw");
-        nuevoContacto.setId(1);
-        contactos.put(1,nuevoContacto);
-        nuevoContacto = new Contacto();
-        nuevoContacto.setApellido("sdfsfd");
-        nuevoContacto.setNombre("dddfdf");
-        nuevoContacto.setCorreo("dfsdf");
-        nuevoContacto.setDireccion("dsferfw");
-        nuevoContacto.setTelefono("fwegw");
-        nuevoContacto.setId(2);
 
-        contactos.put(2,nuevoContacto);
     }
 
     public String getNombre() {
@@ -91,6 +75,10 @@ public class ContactoBean implements Serializable {
         this.correo = correo;
     }
 
+    public void insertarContacto(Integer id, Contacto contacto){
+        this.contactos.put(id,contacto);
+    }
+
 
     public List<Contacto> getContactos() {
         return new ArrayList<Contacto>(contactos.values());
@@ -104,19 +92,16 @@ public class ContactoBean implements Serializable {
         this.contactos = contactos;
     }
 
-    public void insertarConctacto(){
-     Contacto nuevoContacto = new Contacto();
-     nuevoContacto.setApellido(this.apellido);
-     nuevoContacto.setNombre(this.nombre);
-     nuevoContacto.setCorreo(this.correo);
-     nuevoContacto.setDireccion(this.direccion);
-     nuevoContacto.setTelefono(this.telefono);
-     int id= Contacto.getultimoId() + 1;
-     nuevoContacto.setId(id);
-     Contacto.setultimoId(id);
-     this.contactos.put(id,nuevoContacto);
-     limpiarFormulario();
-    }
+//    public void insertarConctacto(){
+//     Contacto nuevoContacto = new Contacto();
+//     nuevoContacto.setApellido(this.apellido);
+//     nuevoContacto.setNombre(this.nombre);
+//     int id= Contacto.getultimoId() + 1;
+//     nuevoContacto.setId(id);
+//     Contacto.setultimoId(id);
+//     this.contactos.put(id,nuevoContacto);
+//     limpiarFormulario();
+//    }
 
     public void cargarContacto(Contacto contacto){
         nombre = contacto.getNombre();
