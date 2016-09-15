@@ -9,25 +9,27 @@
 >
 
 <h:head>
-    <title>JSF 2.0 Hello World</title>
+    <title>Practica 8</title>
     <h:outputStylesheet name="grid/grid.css" library="primefaces" />
 </h:head>
 <h:body>
+    <h1>Contactos</h1>
+    <p:button outcome="contacto_rapido" value="Nuevo..."  />
 
-    <h:link value="Nuevo..." outcome="contacto_rapido" />
     <h:form id="form">
     <div class="ui-g">
+
         <div class="ui-g-8">
-            <p:dataTable id="tablaContactos" var="contacto" value="#{contactoBean.contactos}">
-                <p:column headerText="ID">
+            <p:dataTable id="tablaContactos" var="contacto" value="#{contactoBean.contactos}" scrollable="true" scrollHeight="278">
+                <p:column headerText="ID" footerText="ID">
                     <h:outputText value="#{contacto.id}" />
                 </p:column>
 
-                <p:column headerText="Nombre">
+                <p:column headerText="Nombre" footerText="Nombre">
                     <h:outputText value="#{contacto.nombre}" />
                 </p:column>
 
-                <p:column headerText="Apellido">
+                <p:column headerText="Apellido" footerText="Apellido">
                     <h:outputText value="#{contacto.apellido}" />
                 </p:column>
 
@@ -83,8 +85,8 @@
                         </div>
 
                     </div>
-                    <h:commandButton value="Actualizar"  actionListener="#{contactoBean.actualizarContacto}" styleClass="ui-priority-primary" />
-
+                    <p:commandButton value="Actualizar" update=":form:tablaContactos"  actionListener="#{contactoBean.actualizarContacto}" styleClass="ui-priority-primary" />
+                    <p:commandButton value="Borrar" update=":form:tablaContactos :form:formEditar"  actionListener="#{contactoBean.borrarContacto}" styleClass="ui-priority-primary" />
 
 
             </p:panel>

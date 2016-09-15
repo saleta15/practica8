@@ -9,7 +9,7 @@
 >
 
 <h:head>
-    <title>JSF 2.0 Hello World</title>
+    <title>Practica 8</title>
     <h:outputStylesheet name="grid/grid.css" library="primefaces" />
 </h:head>
 <h:body>
@@ -19,7 +19,8 @@
             <div class="ui-g">
                 <div class="ui-g-4">Nombre</div>
                 <div class="ui-g-8">
-                    <p:inputText id="nombreInsert" value="#{contactoRapidoBean.nombre}" />
+                    <p:inputText id="nombreInsert" value="#{contactoRapidoBean.nombre}" required="true" requiredMessage="Este campo es requerido!" />
+                    <br/>
                     <h:message style="color: red" for="nombreInsert"/><br/>
                 </div>
 
@@ -27,8 +28,9 @@
             <div class="ui-g">
                 <div class="ui-g-4">Apellido</div>
                 <div class="ui-g-8">
-                    <p:inputText id="apellidoInsert" value="#{contactoRapidoBean.apellido}"/>
-                    <h:message style="color: red" for="apellidoInsert"/><br/>
+                    <p:inputText id="apellidoInsert" value="#{contactoRapidoBean.apellido}" required="true" requiredMessage="Este campo es requerido!"/>
+                    <br/>
+                    <h:message style="color: red" value="Requerido" for="apellidoInsert"/><br/>
                 </div>
 
             </div>

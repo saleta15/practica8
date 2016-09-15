@@ -112,8 +112,16 @@ public class ContactoBean implements Serializable {
         id = contacto.getId();
     }
 
-    public void actualizarContacto(){
+    public void borrarContacto(){
+        if(id == 0)
+            return;
+        contactos.remove(id);
+        limpiarFormulario();
+    }
 
+    public void actualizarContacto(){
+        if(id == 0)
+            return;
         Contacto contacto = new Contacto();
         contacto.setNombre(nombre);
         contacto.setApellido(apellido);
@@ -131,6 +139,7 @@ public class ContactoBean implements Serializable {
         this.correo = "";
         this.direccion = "";
         this.telefono = "";
+        this.id = 0;
     }
 
 }
